@@ -1,0 +1,718 @@
+﻿<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>GoFast Situbondo | Layanan Cepat & Terpercaya</title>
+  <meta name="description" content="GoFast Situbondo: layanan ojek online, kurir, delivery, belanja, car private, dan layanan bisnis. Cepat, aman, transparan." />
+  <style>
+    :root{
+      --primary:#1bbf4b;
+      --primary-2:#12a43e;
+      --text:#152016;
+      --muted:#5b6b5f;
+      --bg:#ffffff;
+      --card:#ffffff;
+      --soft:#f4fff7;
+      --border:rgba(0,0,0,.08);
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --shadow-sm:0 6px 18px rgba(0,0,0,.06);
+      --radius:16px;
+      --radius-sm:12px;
+      --max:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      line-height:1.6;
+    }
+
+    a{color:inherit}
+    .container{width:min(92%, var(--max)); margin:0 auto}
+
+    /* Topbar */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+    }
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, #d8ffe5 0%, #b7ffd0 35%, #21c65b 100%);
+      box-shadow: 0 8px 20px rgba(27,191,75,.20);
+      border: 1px solid rgba(27,191,75,.25);
+    }
+    .brand h1{
+      font-size:16px;
+      line-height:1.2;
+      margin:0;
+      font-weight:800;
+      letter-spacing:.2px;
+    }
+    .brand small{
+      display:block;
+      color:var(--muted);
+      font-weight:600;
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+      padding:10px 10px;
+      border-radius:10px;
+      transition: .2s ease;
+    }
+    nav a:hover{background: rgba(27,191,75,.08); color: var(--text)}
+    .cta{
+      text-decoration:none;
+      font-size:13px;
+      font-weight:800;
+      padding:10px 14px;
+      border-radius:12px;
+      background: linear-gradient(135deg, var(--primary) 0%, #38d86b 60%, #8df0ae 120%);
+      color:#fff;
+      box-shadow: 0 12px 30px rgba(27,191,75,.22);
+      border: 1px solid rgba(27,191,75,.25);
+      transition: transform .18s ease, box-shadow .18s ease;
+      white-space:nowrap;
+    }
+    .cta:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(27,191,75,.28);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(27,191,75,.18) 0%, rgba(27,191,75,0) 55%),
+        radial-gradient(circle at 90% 25%, rgba(27,191,75,.14) 0%, rgba(27,191,75,0) 55%),
+        linear-gradient(180deg, #ffffff 0%, #f6fff9 55%, #ffffff 100%);
+    }
+    .hero .wrap{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:26px;
+      padding: 38px 0 26px;
+      align-items:stretch;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(27,191,75,.10);
+      border: 1px solid rgba(27,191,75,.22);
+      color: #1b6b34;
+      font-weight:800;
+      font-size:12px;
+    }
+    .badge span.dot{
+      width:8px;height:8px;border-radius:99px;
+      background: var(--primary);
+      box-shadow: 0 0 0 5px rgba(27,191,75,.14);
+    }
+
+    .hero h2{
+      margin:12px 0 10px;
+      font-size:38px;
+      line-height:1.15;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width: 58ch;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 14px;
+      font-weight:900;
+      font-size:14px;
+      text-decoration:none;
+      border: 1px solid rgba(27,191,75,.25);
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary) 0%, #3cdd6f 60%, #a8f5c1 120%);
+      color:#fff;
+      box-shadow: 0 14px 34px rgba(27,191,75,.22);
+    }
+    .btn-primary:hover{transform: translateY(-1px)}
+    .btn-ghost{
+      background: rgba(255,255,255,.7);
+      color: var(--text);
+    }
+    .btn-ghost:hover{background: rgba(27,191,75,.08)}
+
+    .hero-card{
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .hero-card h3{
+      margin:0;
+      font-size:14px;
+      font-weight:900;
+      color:#1b6b34;
+      letter-spacing:.2px;
+    }
+    .statgrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    .stat{
+      background: linear-gradient(180deg, #ffffff 0%, #f4fff7 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat b{
+      display:block;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .stat span{
+      display:block;
+      color: var(--muted);
+      font-weight:700;
+      font-size:12px;
+      margin-top:2px;
+    }
+    .note{
+      margin:0;
+      color: var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    /* Sections */
+    section{padding: 22px 0}
+    .section-title{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin: 22px 0 14px;
+      flex-wrap:wrap;
+    }
+    .section-title h3{
+      margin:0;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-weight:700;
+      font-size:13px;
+      max-width: 72ch;
+    }
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .service{
+      grid-column: span 4;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      position:relative;
+      overflow:hidden;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .service:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0,0,0,.08);
+    }
+    .service::before{
+      content:"";
+      position:absolute;
+      inset:-60px -60px auto auto;
+      width:140px;height:140px;
+      background: radial-gradient(circle at 30% 30%, rgba(27,191,75,.22) 0%, rgba(27,191,75,0) 70%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .icon{
+      width:42px;height:42px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(27,191,75,.10);
+      border: 1px solid rgba(27,191,75,.22);
+      font-weight:900;
+      color:#1b6b34;
+      margin-bottom:10px;
+    }
+    .service h4{
+      margin:0 0 6px;
+      font-size:16px;
+      letter-spacing:-.1px;
+    }
+    .service p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-weight:650;
+      font-size:13px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      background: var(--soft);
+      border: 1px solid rgba(27,191,75,.18);
+      font-size:12px;
+      font-weight:850;
+      color:#1b6b34;
+    }
+
+    /* Trust */
+    .trust{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top: 6px;
+    }
+    .trust-card{
+      background: linear-gradient(180deg, #ffffff 0%, #f4fff7 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .trust-card h4{margin:0 0 6px; font-size:15px}
+    .trust-card ul{margin:10px 0 0; padding:0 0 0 18px; color:var(--muted); font-weight:700; font-size:13px}
+    .trust-card li{margin:6px 0}
+
+    /* Testimonials */
+    .testimonials{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .t-card{
+      grid-column: span 4;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      position:relative;
+      overflow:hidden;
+    }
+    .t-card::before{
+      content:"“";
+      position:absolute;
+      top:-18px;
+      right:12px;
+      font-size:80px;
+      color: rgba(27,191,75,.12);
+      font-weight:900;
+      line-height:1;
+    }
+    .t-card p{
+      margin:0 0 12px;
+      color:#2a3a2d;
+      font-weight:700;
+      font-size:13.5px;
+    }
+    .t-foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-top: 1px dashed rgba(0,0,0,.10);
+      padding-top:12px;
+    }
+    .who b{display:block; font-size:13px}
+    .who span{display:block; font-size:12px; color:var(--muted); font-weight:750}
+    .stars{
+      font-weight:900;
+      letter-spacing:1px;
+      color:#1b6b34;
+      font-size:12px;
+      white-space:nowrap;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 26px;
+      background: linear-gradient(135deg, #0f8e33 0%, #1bbf4b 55%, #7ef0a7 140%);
+      color:#fff;
+      padding: 26px 0;
+      border-top: 1px solid rgba(255,255,255,.25);
+    }
+    footer .foot{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    footer h4{margin:0 0 6px; font-size:16px}
+    footer p{margin:0; opacity:.92; font-weight:650; font-size:13px; max-width: 70ch}
+    .foot-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .foot-links a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:850;
+      font-size:13px;
+      padding:10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.10);
+    }
+    .foot-links a:hover{background: rgba(255,255,255,.16)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero .wrap{grid-template-columns:1fr}
+      .service{grid-column: span 6}
+      .t-card{grid-column: span 6}
+      .trust{grid-template-columns:1fr}
+    }
+    @media (max-width: 640px){
+      .hero h2{font-size:26px}
+      .service{grid-column: span 12}
+      .t-card{grid-column: span 12}
+      nav a{padding:8px 8px}
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container topbar">
+      <a class="brand" href="#top">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>GoFast Situbondo</h1>
+          <small>Ojek Online • Kurir • Delivery • Car</small>
+        </div>
+      </a>
+
+      <nav>
+        <a href="#layanan">Layanan</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#testimoni">Testimoni</a>
+        <a class="cta" href="https://www.gofastsitubondo.com/p/pesan-go-fast-by-website.html" target="_blank" rel="noopener">
+          Pesan Sekarang
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <div class="badge"><span class="dot"></span> Cepat • Aman • Transparan</div>
+          <h2>Layanan GoFast yang lebih profesional untuk kebutuhan harian & bisnis</h2>
+          <p>
+            Pesan layanan GoFast Situbondo untuk antar-jemput, kirim paket, belanja, hingga layanan kendaraan.
+            Driver ramah, respon cepat, dan proses mudah dari website.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://www.gofastsitubondo.com/p/pesan-go-fast-by-website.html" target="_blank" rel="noopener">
+              Mulai Pesan Layanan
+            </a>
+            <a class="btn btn-ghost" href="#layanan">Lihat 7 Layanan Terbaru</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div>
+            <h3>Ringkasan Layanan</h3>
+            <p class="note">Dipakai untuk kebutuhan pribadi, UMKM, hingga operasional harian.</p>
+            <div class="statgrid">
+              <div class="stat">
+                <b>7</b>
+                <span>Layanan GoFast terbaru</span>
+              </div>
+              <div class="stat">
+                <b>1 Klik</b>
+                <span>Pesan via website</span>
+              </div>
+              <div class="stat">
+                <b>Cepat</b>
+                <span>Respon & penjemputan</span>
+              </div>
+              <div class="stat">
+                <b>Aman</b>
+                <span>Driver terverifikasi</span>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            *Sesuaikan detail layanan & area operasional di bawah ini sesuai kebutuhan GoFast kamu.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="container" id="layanan">
+      <div class="section-title">
+        <div>
+          <h3>7 Layanan GoFast Terbaru</h3>
+          <p>Paket layanan lengkap untuk mobilitas, pengiriman, belanja, dan kebutuhan bisnis.</p>
+        </div>
+      </div>
+
+     <div class="grid">
+  
+  <article class="service">
+    <div class="icon">FD</div>
+    <h4>Fast Delivery</h4>
+    <p>Kirim barang cepat, aman, dan efisien dalam kota Situbondo. Cocok untuk UMKM & kebutuhan harian.</p>
+    <span class="pill">Same-day dalam kota*</span>
+  </article>
+
+  <article class="service">
+    <div class="icon">FK</div>
+    <h4>Fast Kurir</h4>
+    <p>Layanan kurir dokumen dan paket kecil dengan sistem rapi, komunikasi jelas, dan pengiriman tepat waktu.</p>
+    <span class="pill">Dokumen & paket</span>
+  </article>
+
+  <article class="service">
+    <div class="icon">FR</div>
+    <h4>Fast Ride</h4>
+    <p>Layanan ojek online cepat dan nyaman untuk mobilitas harian, antar-jemput kerja, sekolah, dan aktivitas lainnya.</p>
+    <span class="pill">Cepat & hemat</span>
+  </article>
+
+  <article class="service">
+    <div class="icon">FC</div>
+    <h4>FastCar</h4>
+    <p>Layanan mobil untuk kebutuhan pribadi, keluarga, perjalanan bisnis, maupun antar jemput khusus.</p>
+    <span class="pill">Nyaman & fleksibel</span>
+  </article>
+
+  <article class="service">
+    <div class="icon">FM</div>
+    <h4>Fast Mart</h4>
+    <p>Layanan khusus UMKM dan toko online untuk pengiriman rutin, pickup terjadwal, dan operasional bisnis lebih rapi.</p>
+    <span class="pill">Support UMKM</span>
+  </article>
+
+  <article class="service">
+    <div class="icon">FX</div>
+    <h4>Fast Express</h4>
+    <p>Pengiriman barang dengan estimasi 1 hari sampai untuk rute tertentu. Cocok untuk paket penting dan prioritas.</p>
+    <span class="pill">1 hari sampai*</span>
+  </article>
+
+</div>
+
+
+    <section class="container" id="keunggulan">
+      <div class="section-title">
+        <div>
+          <h3>Kenapa GoFast?</h3>
+          <p>Fokus pada layanan yang rapi, responsif, dan pengalaman pelanggan yang konsisten.</p>
+        </div>
+      </div>
+
+      <div class="trust">
+        <div class="trust-card">
+          <h4>Standar Layanan Profesional</h4>
+          <ul>
+            <li>Driver terverifikasi & komunikasi sopan</li>
+            <li>Estimasi biaya & proses lebih transparan</li>
+            <li>Prioritas keamanan paket & pelanggan</li>
+            <li>Support cepat untuk kebutuhan mendesak</li>
+          </ul>
+        </div>
+        <div class="trust-card">
+          <h4>Cocok untuk Harian & Bisnis</h4>
+          <ul>
+            <li>Pengiriman rutin UMKM & toko online</li>
+            <li>Pickup terjadwal untuk order banyak</li>
+            <li>Belanja & food delivery untuk keluarga</li>
+            <li>FastCar Private untuk acara & perjalanan</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="testimoni">
+      <div class="section-title">
+        <div>
+          <h3>Testimoni Pelanggan</h3>
+          <p>Contoh testimoni profesional yang bisa kamu sesuaikan dengan data asli pelanggan.</p>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="t-card">
+          <p>“Respon admin cepat, drivernya datang sesuai estimasi. Pengiriman rapi dan aman.”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Sarah</b>
+              <span>Pelanggan Harian</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p>“Untuk kebutuhan toko, FastMart bantu banget. Pickup terjadwal, orderan jadi lebih tertib.”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Reza</b>
+              <span>Owner UMKM</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p>“Fast Belanja paling kepake! Tinggal order, semua kebutuhan rumah datang tanpa ribet.”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Dita</b>
+              <span>Ibu Rumah Tangga</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p>“FastCar Private nyaman untuk keluarga. Mobil bersih, sopir sopan, perjalanan terasa aman.”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Intan</b>
+              <span>Karyawan</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p>“Fast Express beneran ngebantu. Paket penting sampai 1 hari, update-nya jelas dan aman”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Wawan</b>
+              <span>Mahasiswa</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="t-card">
+          <p>“Fast Kurir untuk dokumen kantor sangat membantu. Komunikasi jelas, pengantaran on time.”</p>
+          <div class="t-foot">
+            <div class="who">
+              <b>Hana</b>
+              <span>Staf Klinik</span>
+            </div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <a class="btn btn-primary" href="https://www.gofastsitubondo.com/p/pesan-go-fast-by-website.html" target="_blank" rel="noopener">
+          Pesan Sekarang di Website
+        </a>
+        <a class="btn btn-ghost" href="#top">Kembali ke Atas</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <h4>GoFast Situbondo</h4>
+        <p>
+          Layanan ojek online, kurir, delivery, belanja, food, dan car private.
+          Kami berkomitmen memberi pengalaman yang cepat, aman, dan profesional.
+        </p>
+      </div>
+      <div class="foot-links">
+        <a href="#layanan">Layanan</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#testimoni">Testimoni</a>
+        <a href="https://www.gofastsitubondo.com/p/pesan-go-fast-by-website.html" target="_blank" rel="noopener">Pesan</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:14px; opacity:.9; font-weight:700; font-size:12px;">
+      © <span id="y"></span> GoFast Situbondo. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
