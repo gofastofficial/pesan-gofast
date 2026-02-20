@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
@@ -179,6 +179,7 @@
       border: 1px solid rgba(27,191,75,.25);
       transition: .2s ease;
       white-space:nowrap;
+      cursor:pointer;
     }
     .btn-primary{
       background: linear-gradient(135deg, var(--primary) 0%, #3cdd6f 60%, #a8f5c1 120%);
@@ -398,6 +399,174 @@
       white-space:nowrap;
     }
 
+    /* ====== NEW: Booking Forms (Sahur & Buka) ====== */
+    .booking-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top: 8px;
+    }
+    .booking-card{
+      background: linear-gradient(180deg, #ffffff 0%, #f4fff7 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow-sm);
+      position:relative;
+      overflow:hidden;
+    }
+    .booking-card::before{
+      content:"";
+      position:absolute;
+      inset:-60px -60px auto auto;
+      width:160px;height:160px;
+      background: radial-gradient(circle at 30% 30%, rgba(27,191,75,.18) 0%, rgba(27,191,75,0) 70%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .booking-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .booking-head h4{
+      margin:0;
+      font-size:16px;
+      letter-spacing:-.1px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(27,191,75,.10);
+      border: 1px solid rgba(27,191,75,.20);
+      color:#1b6b34;
+      font-size:12px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+    .form{
+      display:grid;
+      gap:10px;
+      position:relative;
+      z-index:1;
+    }
+    .field{
+      display:grid;
+      gap:6px;
+    }
+    .field label{
+      font-size:12px;
+      font-weight:850;
+      color:#1b6b34;
+    }
+    .field input, .field textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.9);
+      outline:none;
+      font-weight:700;
+      color:var(--text);
+      transition: .15s ease;
+    }
+    .field textarea{min-height: 92px; resize: vertical;}
+    .field input:focus, .field textarea:focus{
+      border-color: rgba(27,191,75,.45);
+      box-shadow: 0 0 0 4px rgba(27,191,75,.12);
+    }
+    .form-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 6px;
+    }
+    .btn-small{
+      padding:10px 14px;
+      border-radius: 12px;
+      font-size:13px;
+    }
+    .hint{
+      margin:8px 0 0;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:750;
+    }
+
+    /* ====== NEW: Toast Notification ====== */
+    .toast{
+      position:fixed;
+      left:16px;
+      bottom:16px;
+      width:min(360px, calc(100% - 32px));
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,.12);
+      border-radius: 16px;
+      padding: 12px 12px;
+      display:none;
+      z-index: 999;
+      backdrop-filter: blur(10px);
+      transform: translateY(10px);
+      opacity:0;
+      transition: .25s ease;
+    }
+    .toast.show{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      transform: translateY(0);
+      opacity:1;
+    }
+    .toast .bubble{
+      width:42px;height:42px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      background: rgba(27,191,75,.12);
+      border: 1px solid rgba(27,191,75,.22);
+      color:#1b6b34;
+      font-weight:900;
+      flex:0 0 auto;
+    }
+    .toast .t-body{flex:1}
+    .toast .t-title{
+      margin:0;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:-.1px;
+      color:#153e22;
+    }
+    .toast .t-desc{
+      margin:2px 0 0;
+      font-size:12px;
+      font-weight:750;
+      color: var(--muted);
+    }
+    .toast .t-time{
+      margin-top:6px;
+      font-size:11px;
+      font-weight:850;
+      color:#1b6b34;
+      opacity:.9;
+    }
+    .toast button{
+      border:none;
+      background: transparent;
+      font-weight:900;
+      color: rgba(0,0,0,.45);
+      cursor:pointer;
+      padding:6px 8px;
+      border-radius: 10px;
+      transition: .15s ease;
+    }
+    .toast button:hover{background: rgba(0,0,0,.06); color: rgba(0,0,0,.7)}
+
     /* Footer */
     footer{
       margin-top: 26px;
@@ -439,6 +608,7 @@
       .service{grid-column: span 6}
       .t-card{grid-column: span 6}
       .trust{grid-template-columns:1fr}
+      .booking-wrap{grid-template-columns:1fr}
     }
     @media (max-width: 640px){
       .hero h2{font-size:26px}
@@ -486,7 +656,7 @@
             <a class="btn btn-primary" href="https://www.gofastsitubondo.com/p/pesan-go-fast-by-website.html" target="_blank" rel="noopener">
               Mulai Pesan Layanan
             </a>
-            <a class="btn btn-ghost" href="#layanan">Lihat 6 Layanan Terbaru</a>
+            <a class="btn btn-ghost" href="#booking-ramadhan">Booking Sahur & Buka</a>
           </div>
         </div>
 
@@ -513,9 +683,114 @@
               </div>
             </div>
           </div>
-          <p class="note">
-          </p>
+          <p class="note"></p>
         </aside>
+      </div>
+    </section>
+
+    <!-- ====== Booking Sahur & Buka ====== -->
+    <section class="container" id="booking-ramadhan">
+      <div class="section-title">
+        <div>
+          <h3>Booking Sahur & Buka (Langsung WhatsApp Admin)</h3>
+          <p>Isi form → klik Kirim → otomatis membuka WhatsApp admin dengan format pesan rapi.</p>
+        </div>
+      </div>
+
+      <div class="booking-wrap">
+        <!-- Sahur -->
+        <div class="booking-card">
+          <div class="booking-head">
+            <div>
+              <h4>Format Sahur</h4>
+              <div class="hint">Cocok untuk order malam / menjelang sahur.</div>
+            </div>
+            <div class="tag">🌙 SAHUR</div>
+          </div>
+
+          <form class="form" id="formSahur">
+            <div class="field">
+              <label for="s_nama">Nama</label>
+              <input id="s_nama" name="nama" placeholder="Contoh: Rosi" required />
+            </div>
+            <div class="field">
+              <label for="s_alamat">Alamat</label>
+              <input id="s_alamat" name="alamat" placeholder="Contoh: Panji, Situbondo" required />
+            </div>
+            <div class="field">
+              <label for="s_jam">Jam Booking</label>
+              <input id="s_jam" name="jam" type="time" required />
+            </div>
+            <div class="field">
+              <label for="s_resto">Nama Resto</label>
+              <input id="s_resto" name="resto" placeholder="Contoh: Warung Bu Sari" required />
+            </div>
+            <div class="field">
+              <label for="s_detail">Detail Pesanan</label>
+              <textarea id="s_detail" name="detail" placeholder="Contoh: Nasi ayam 2, es teh 1, sambal dipisah" required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary btn-small" type="submit">Kirim ke WhatsApp Admin</button>
+              <button class="btn btn-ghost btn-small" type="button" data-reset="sahur">Reset</button>
+            </div>
+
+            <div class="field">
+              <label for="s_output">Preview Format (opsional)</label>
+              <textarea id="s_output" readonly placeholder="Teks akan terisi otomatis setelah klik kirim."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-ghost btn-small" type="button" data-copy="s_output">Copy</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Buka -->
+        <div class="booking-card">
+          <div class="booking-head">
+            <div>
+              <h4>Format Buka</h4>
+              <div class="hint">Cocok untuk order mendekati waktu berbuka.</div>
+            </div>
+            <div class="tag">🕌 BUKA</div>
+          </div>
+
+          <form class="form" id="formBuka">
+            <div class="field">
+              <label for="b_nama">Nama</label>
+              <input id="b_nama" name="nama" placeholder="Contoh: Dimas" required />
+            </div>
+            <div class="field">
+              <label for="b_alamat">Alamat</label>
+              <input id="b_alamat" name="alamat" placeholder="Contoh: Kota Situbondo" required />
+            </div>
+            <div class="field">
+              <label for="b_jam">Jam Booking</label>
+              <input id="b_jam" name="jam" type="time" required />
+            </div>
+            <div class="field">
+              <label for="b_resto">Nama Resto</label>
+              <input id="b_resto" name="resto" placeholder="Contoh: Ayam Geprek X" required />
+            </div>
+            <div class="field">
+              <label for="b_detail">Detail Pesanan</label>
+              <textarea id="b_detail" name="detail" placeholder="Contoh: Paket hemat 2, level 3, minta sendok 2" required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary btn-small" type="submit">Kirim ke WhatsApp Admin</button>
+              <button class="btn btn-ghost btn-small" type="button" data-reset="buka">Reset</button>
+            </div>
+
+            <div class="field">
+              <label for="b_output">Preview Format (opsional)</label>
+              <textarea id="b_output" readonly placeholder="Teks akan terisi otomatis setelah klik kirim."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-ghost btn-small" type="button" data-copy="b_output">Copy</button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -527,52 +802,50 @@
         </div>
       </div>
 
-     <div class="grid">
-  
-  <article class="service">
-    <div class="icon">FD</div>
-    <h4>Fast Delivery</h4>
-    <p>Kirim barang cepat, aman, dan efisien dalam kota Situbondo. Cocok untuk UMKM & kebutuhan harian.</p>
-    <span class="pill">Same-day dalam kota*</span>
-  </article>
+      <div class="grid">
+        <article class="service">
+          <div class="icon">FD</div>
+          <h4>Fast Delivery</h4>
+          <p>Kirim barang cepat, aman, dan efisien dalam kota Situbondo. Cocok untuk UMKM & kebutuhan harian.</p>
+          <span class="pill">Same-day dalam kota*</span>
+        </article>
 
-  <article class="service">
-    <div class="icon">FK</div>
-    <h4>Fast Kurir</h4>
-    <p>Layanan kurir dokumen dan paket kecil dengan sistem rapi, komunikasi jelas, dan pengiriman tepat waktu.</p>
-    <span class="pill">Dokumen & paket</span>
-  </article>
+        <article class="service">
+          <div class="icon">FK</div>
+          <h4>Fast Kurir</h4>
+          <p>Layanan kurir dokumen dan paket kecil dengan sistem rapi, komunikasi jelas, dan pengiriman tepat waktu.</p>
+          <span class="pill">Dokumen & paket</span>
+        </article>
 
-  <article class="service">
-    <div class="icon">FR</div>
-    <h4>Fast Ride</h4>
-    <p>Layanan ojek online cepat dan nyaman untuk mobilitas harian, antar-jemput kerja, sekolah, dan aktivitas lainnya.</p>
-    <span class="pill">Cepat & hemat</span>
-  </article>
+        <article class="service">
+          <div class="icon">FR</div>
+          <h4>Fast Ride</h4>
+          <p>Layanan ojek online cepat dan nyaman untuk mobilitas harian, antar-jemput kerja, sekolah, dan aktivitas lainnya.</p>
+          <span class="pill">Cepat & hemat</span>
+        </article>
 
-  <article class="service">
-    <div class="icon">FC</div>
-    <h4>FastCar</h4>
-    <p>Layanan mobil untuk kebutuhan pribadi, keluarga, perjalanan bisnis, maupun antar jemput khusus.</p>
-    <span class="pill">Nyaman & fleksibel</span>
-  </article>
+        <article class="service">
+          <div class="icon">FC</div>
+          <h4>FastCar</h4>
+          <p>Layanan mobil untuk kebutuhan pribadi, keluarga, perjalanan bisnis, maupun antar jemput khusus.</p>
+          <span class="pill">Nyaman & fleksibel</span>
+        </article>
 
-  <article class="service">
-    <div class="icon">FM</div>
-    <h4>Fast Mart</h4>
-    <p>Layanan khusus UMKM dan toko online untuk pengiriman rutin, pickup terjadwal, dan operasional bisnis lebih rapi.</p>
-    <span class="pill">Support UMKM</span>
-  </article>
+        <article class="service">
+          <div class="icon">FM</div>
+          <h4>Fast Mart</h4>
+          <p>Layanan khusus UMKM dan toko online untuk pengiriman rutin, pickup terjadwal, dan operasional bisnis lebih rapi.</p>
+          <span class="pill">Support UMKM</span>
+        </article>
 
-  <article class="service">
-    <div class="icon">FX</div>
-    <h4>Fast Express</h4>
-    <p>Pengiriman barang dengan estimasi 1 hari sampai untuk rute tertentu. Cocok untuk paket penting dan prioritas.</p>
-    <span class="pill">1 hari sampai*</span>
-  </article>
-
-</div>
-
+        <article class="service">
+          <div class="icon">FX</div>
+          <h4>Fast Express</h4>
+          <p>Pengiriman barang dengan estimasi 1 hari sampai untuk rute tertentu. Cocok untuk paket penting dan prioritas.</p>
+          <span class="pill">1 hari sampai*</span>
+        </article>
+      </div>
+    </section>
 
     <section class="container" id="keunggulan">
       <div class="section-title">
@@ -710,10 +983,182 @@
     </div>
   </footer>
 
+  <!-- Toast -->
+  <div class="toast" id="toast" aria-live="polite" aria-atomic="true">
+    <div class="bubble">G</div>
+    <div class="t-body">
+      <p class="t-title" id="toastTitle">Notifikasi</p>
+      <p class="t-desc" id="toastDesc">Aktivitas terbaru</p>
+      <div class="t-time" id="toastTime">Baru saja</div>
+    </div>
+    <button type="button" id="toastClose" aria-label="Tutup">✕</button>
+  </div>
+
   <script>
+    // Tahun footer
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ====== WhatsApp admin direct ======
+    const ADMIN_WA_E164 = "6282143057979"; // +62 821-4305-7979 -> WA format
+
+    function formatPesanText({tipe, nama, alamat, jam, resto, detail}) {
+      return [
+        `🟢 GOFAST - ${tipe.toUpperCase()}`,
+        ``,
+        `Nama: ${nama}`,
+        `Alamat: ${alamat}`,
+        `Jam booking: ${jam}`,
+        `Nama resto: ${resto}`,
+        `Detail pesanan: ${detail}`,
+        ``,
+        `Mohon diproses ya. Terima kasih.`
+      ].join('\n');
+    }
+
+    function openWhatsAppWithMessage(message) {
+      const encoded = encodeURIComponent(message);
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      const url = isMobile
+        ? `whatsapp://send?phone=${ADMIN_WA_E164}&text=${encoded}`
+        : `https://wa.me/${ADMIN_WA_E164}?text=${encoded}`;
+
+      window.open(url, "_blank", "noopener");
+    }
+
+    function handleFormDirectWA(formId, prefix, tipe) {
+      const form = document.getElementById(formId);
+      const out = document.getElementById(prefix + "_output");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nama  = document.getElementById(prefix + "_nama").value.trim();
+        const alamat= document.getElementById(prefix + "_alamat").value.trim();
+        const jam   = document.getElementById(prefix + "_jam").value;
+        const resto = document.getElementById(prefix + "_resto").value.trim();
+        const detail= document.getElementById(prefix + "_detail").value.trim();
+
+        const msg = formatPesanText({tipe, nama, alamat, jam, resto, detail});
+        out.value = msg; // preview
+
+        openWhatsAppWithMessage(msg);
+        showToast(`Mengarah ke WhatsApp Admin`, `${nama} • ${resto}`, "Siap dikirim");
+      });
+    }
+
+    handleFormDirectWA("formSahur", "s", "Sahur");
+    handleFormDirectWA("formBuka", "b", "Buka");
+
+    // Reset
+    document.querySelectorAll("[data-reset]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const mode = btn.getAttribute("data-reset");
+        if (mode === "sahur") {
+          document.getElementById("formSahur").reset();
+          document.getElementById("s_output").value = "";
+          showToast("Form Sahur direset", "Silakan isi ulang", "OK");
+        } else {
+          document.getElementById("formBuka").reset();
+          document.getElementById("b_output").value = "";
+          showToast("Form Buka direset", "Silakan isi ulang", "OK");
+        }
+      });
+    });
+
+    // Copy
+    async function copyFrom(id) {
+      const el = document.getElementById(id);
+      const text = el.value || "";
+      if (!text.trim()) {
+        showToast("Belum ada teks", "Isi form lalu klik kirim", "Info");
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Tersalin", "Teks sudah masuk clipboard", "Sip");
+      } catch (err) {
+        el.focus();
+        el.select();
+        document.execCommand("copy");
+        showToast("Tersalin", "Teks sudah tersalin (fallback)", "Sip");
+      }
+    }
+
+    document.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", () => copyFrom(btn.getAttribute("data-copy")));
+    });
+
+    // ====== Toast ======
+    const toast = document.getElementById("toast");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastDesc = document.getElementById("toastDesc");
+    const toastTime = document.getElementById("toastTime");
+    const toastClose = document.getElementById("toastClose");
+
+    let toastTimer = null;
+
+    function showToast(title, desc, timeLabel) {
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+      toastTime.textContent = timeLabel || "Baru saja";
+
+      toast.classList.add("show");
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 5200);
+    }
+
+    toastClose.addEventListener("click", () => toast.classList.remove("show"));
+
+    // ====== Dummy notifikasi acak tiap ~8 detik ======
+    const dummyPeople = [
+      {name:"Rosita",  action:"deliver", service:"Fast Ride"},
+      {name:"Dimas",   action:"ride",    service:"Fast Ride"},
+      {name:"Aulia",   action:"deliver", service:"Fast Ride"},
+      {name:"Fajar",   action:"ride",    service:"Fast Ride"},
+      {name:"Nabila",  action:"deliver", service:"Fast Ride"},
+      {name:"Rizky",   action:"ride",    service:"Fast Ride"},
+      {name:"Intan",   action:"deliver", service:"Fast Ride"},
+      {name:"Wawan",   action:"ride",    service:"Fast Ride"},
+      {name:"Hana",    action:"deliver", service:"Fast Ride"},
+      {name:"Reza",    action:"ride",    service:"Fast Ride"},
+      {name:"Putri",   action:"deliver", service:"Fast Ride"},
+      {name:"Agus",    action:"ride",    service:"Fast Ride"},
+      {name:"Salsa",   action:"deliver", service:"Fast Ride"},
+      {name:"Bagas",   action:"ride",    service:"Fast Ride"},
+      {name:"Rani",    action:"deliver", service:"Fast Ride"},
+      {name:"Rafi",    action:"ride",    service:"Fast Ride"},
+      {name:"Dita",    action:"deliver", service:"Fast Ride"},
+      {name:"Ilham",   action:"ride",    service:"Fast Ride"},
+      {name:"Sarah",   action:"deliver", service:"Fast Ride"},
+      {name:"Arif",    action:"ride",    service:"Fast Ride"},
+    ];
+
+    const dummyAreas = [
+      "Panji", "Situbondo Kota", "Asembagus", "Panarukan",
+      "Mangaran", "Kapongan", "Bungatan", "Banyuputih"
+    ];
+
+    function rand(arr){ return arr[Math.floor(Math.random()*arr.length)] }
+
+    function startDummyToast() {
+      setTimeout(() => {
+        showRandomDummy();
+        setInterval(showRandomDummy, 8000); // 8 detik
+      }, 3000);
+    }
+
+    function showRandomDummy() {
+      if (toast.classList.contains("show")) return;
+
+      const p = rand(dummyPeople);
+      const area = rand(dummyAreas);
+      const verb = (p.action === "deliver") ? "deliver" : "ride";
+
+      showToast("Aktivitas GoFast", `${p.name} ${verb} • ${p.service} • ${area}`, "± 1 menit lalu");
+    }
+
+    startDummyToast();
   </script>
 </body>
 </html>
-
-
